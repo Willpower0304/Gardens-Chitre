@@ -10,7 +10,7 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    background: rgb(255, 255, 255);
+    background: #F1F1F1;
     color: #131212;
     padding: 20px;
     z-index: 1;
@@ -97,7 +97,8 @@ body {
   
   .menu li {
     padding: 10px 0;
-    font-size: 22px;
+    font-size: 20px;
+    font-weight: 600;
   }
   
   /* mobile styles */
@@ -205,10 +206,11 @@ h1 {
 .p1 {
   font-family: "Junge", cursive;
   text-align: left;
+  padding-top: 10px;
   padding-left: 40px;
-  padding-right: 600px;
+  padding-right: 800px;
   color: #eee;
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: 0.03em;
   line-height: 1.1;
   text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
@@ -270,7 +272,8 @@ h1 {
 
 .products .pro .des h4 {
   padding-top: 7px;
-  font-size: 15px;
+  font-size: 13px;
+  font-family: "Junge", cursive;
   font-weight: 700;
   color:  #088178;
   margin: 0;
@@ -287,13 +290,12 @@ h1 {
   height: 40px;
   line-height: 40px;
   border-radius: 50px;
-  background-color: #d4d4d4;
-  font-weight: 500;
-  color: #088178;
-  border: 1px solid #d4d4d4;
+  background-color: rgb(243, 181, 25);
+  color: #ffffff;
+  border: 1px solid rgb(243, 198, 83);
   position: absolute;
   bottom: 20px;
-  right: 10px;
+  right: 20px;
 }
 
 .title {
@@ -335,7 +337,6 @@ hr {
   padding: 10px 20px;
   font-size: 22px;
   display: inline;
-  font-family: "Junge", cursive;
 }
 
 .seccion a {
@@ -348,3 +349,77 @@ hr {
   color: #cccccc;
 }
 
+
+.products2 {
+  background-color: #F1F1F1;
+  text-align: center;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.products2 .pro-container2{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+
+.products2 .pro2 {
+  width: 20%;
+  min-width: 250px;
+  padding: 10px 12px;
+  border: 1px solid #d4d4d4;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+  margin: 15px 0;
+  transition: 0.2s ease;
+  position: relative;
+}
+
+.products2 .pro2:hover {
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+}
+
+.products2 .pro2 img{
+  width: 100%;
+  border-radius: 20px;
+}
+
+.products2 .pro2 .des2{
+  text-align: start;
+  padding: 10px 0;
+}
+
+.products2 .pro2 .des2 .nameOfPro2{
+  padding-top: 7px;
+  color: #131212;
+  font-size: 20px;
+  margin: 0;
+}
+
+.products2 .pro2 .des2 i{
+  font-size: 12px;
+  color: rgb(243, 181, 25);
+}
+
+.products2 .pro2 .des2 h4 {
+  padding-top: 7px;
+  font-size: 13px;
+  font-family: "Junge", cursive;
+  color:  #088178;
+  margin: 0;
+}
+
+.products2 .pro2 .cart2{
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50px;
+  background-color: rgb(243, 181, 25);
+  color: #ffffff;
+  border: 1px solid rgb(243, 198, 83);
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
