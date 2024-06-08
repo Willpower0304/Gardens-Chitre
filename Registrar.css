@@ -10,7 +10,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(img/background.jpg);
+    background-image: url(img/background2.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -160,7 +160,7 @@ body {
 
 .container .links {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 30px;
 }
 
@@ -171,12 +171,9 @@ body {
     text-decoration: none;
     text-underline-offset: 6px;
     text-decoration-color: #ffffff;
+    text-align: center;
 }
 
 .container .links a:hover {
     text-decoration: underline;
 }
-
-
-
-
