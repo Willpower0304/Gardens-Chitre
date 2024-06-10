@@ -1,0 +1,278 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Judson", serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Navbar Section */ 
+.body1 {
+    min-height: 100vh;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, rgba(0,0,0,0.65) 60%), url(img/montaña.jpg) no-repeat center center scroll;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.logo img{
+    width: 340px;
+  }
+
+  .navbar ul li {
+    display: inline-block;
+  }
+
+  .navbar a {
+    position: relative;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 40px;
+  }
+
+  .navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: .3s;
+  }
+
+  .navbar a:hover::before {
+    width: 100%;
+  }
+
+  .navbar a:hover::before {
+    width: 100%;
+  }
+
+  /* Hamburger menu */ 
+
+  .checkButton {
+    font-size: 30px;
+    color: white;
+    float:  right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+  }
+
+  .mycheckBox {
+    display: none;
+  }
+
+
+  /* navbar Section media */ 
+  @media screen and (max-width: 1024px) {
+    .logo img{
+      width: 290px;
+    }
+
+    .navbar a {
+      font-size: 17px;
+    }
+  }
+
+
+   /* navbar Section media */ 
+  @media screen and (max-width: 771px) {
+    .checkButton {
+      display: block;
+    }
+
+    .navbar ul {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background-color: #4d4d4d;
+      top: 100px;
+      left: 100%;
+      text-align: center;
+      transition: all .5s;
+    }
+
+    .navbar ul li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+    }
+
+    .navbar ul li a {
+      font-size: 20px;
+      color: #ffffff;
+    }
+
+    .mycheckBox:checked ~ ul {
+      left: 0;
+    }
+    
+  }
+
+
+  /* navbar Section media */ 
+  @media screen and (max-width: 771px) {
+    .checkButton {
+      display: block;
+    }
+
+    .navbar ul {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background-color: #4d4d4d;
+      top: 100px;
+      left: 100%;
+      text-align: center;
+      transition: all .5s;
+    }
+
+    .navbar ul li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+    }
+
+    .navbar ul li a {
+      font-size: 20px;
+      color: #ffffff;
+    }
+
+    .mycheckBox:checked ~ ul {
+      left: 0;
+    }
+
+    .logo img{
+      width: 250px;
+    }
+  
+  }
+
+
+  /* Hero Section */ 
+  .hero {
+    color: #fff;
+    text-align: center;
+    margin: 90px 0 0;
+  }
+
+  .hero h1 {
+    font-size: 70px;
+    padding: 0 270px 0;
+    margin-top: 150px;
+    margin-bottom: 40px;
+  }
+
+  .hero p {
+    font-family: "Junge", cursive;
+    font-size: 20px;
+    color: #dddddd;
+    margin: 0 275px 0;
+  }
+
+
+  /* Hero Section Media */ 
+  @media screen and (max-width: 1024px) {
+
+    .hero {
+       margin-left: 30px;
+       margin-right: 30px;
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      padding: 0 45px 0;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin: 0 70px 0;
+    }
+
+  }
+
+
+  /* Hero Section Media */ 
+  @media screen and (max-width: 771px) {
+
+    .hero {
+       margin-left: 30px;
+       margin-right: 30px;
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      padding: 0 45px 0;
+    }
+
+    .hero p {
+      margin: 0 50px 0;
+    }
+  }
+
+
+/* Mission Section */
+.container {
+  padding: 100px 50px 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 120px;
+  background-color: #f1f1f1;
+}
+
+.box1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.box1 > * {
+  align-self: flex-start;
+}
+
+.box1 h1{
+  font-size: 60px;
+  color: #EF5858;
+  margin-bottom: 20px;
+}
+
+.box1 p{
+  font-size: 18px;
+  color: #4d4d4d;
+  font-family: "Junge", cursive;
+  margin-right: 50px;
+}
+
+.box2 img {
+  width: 300px;
+  height: 184px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+}
+
+.box2 .img2 {
+  width: 604px;
+  height: 200px;
+  object-fit: cover;
+}
