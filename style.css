@@ -283,15 +283,14 @@ body {
     color: #fff;
     font-size: 20px;
     background: #D95858;
+    transition: .3s ease-in;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);
   }
   
   .btn:hover {
-    background: #db3434;
-    text-decoration: none;
-    transition: .3s ease-in;
+    background: #d34040;
   }
 
   /* Information Section Media */
