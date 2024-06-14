@@ -557,6 +557,7 @@ footer {
 
 .social-media li a.instagram {
   color: #969696;
+  transition: .2s ease-in;
   text-decoration: none;
 }
 
@@ -566,6 +567,7 @@ footer {
 
 .social-media li a.facebook {
   color: #969696;
+  transition: .2s ease-in;
   text-decoration: none;
 }
 
@@ -575,6 +577,7 @@ footer {
 
 .social-media li a.twitter {
   color: #969696;
+  transition: .2s ease-in;
   text-decoration: none;
 }
 
@@ -584,6 +587,7 @@ footer {
 
 .social-media li a.whatsapp {
   color: #969696;
+  transition: .2s ease-in;
   text-decoration: none;
 }
 
