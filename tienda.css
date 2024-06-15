@@ -248,6 +248,155 @@ body {
 }
 
 
+/* Search Section media */ 
+@media screen and (max-width: 1024px) {
+  .container-1 input#search{
+    width: 250px;
+    height: 50px;
+    background: #D9D9D9;
+    border: none;
+    font-size: 18px;
+    float: left;
+    color: #6C6C6C;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  .container-1 .icono{
+    position: absolute;
+    top: 50%;
+    margin-left: 17px;
+    margin-top: 17px;
+    z-index: 1;
+    color: #4e4e4e;
+  }
+
+  .tel i {
+    color: white;
+    font-size: 30px;
+    margin-right: 20px;
+  }
+
+  .tel p {
+    font-family: "Junge", cursive;
+    font-size: 18px;
+    margin: 0px;
+    color: rgb(209, 209, 209);
+  }
+  
+  .tel h2 {
+    font-size: 20px;
+    margin: 0px;
+    color: white;
+  }
+
+  .carrito i {
+    color: white;
+    font-size: 20px;
+  }
+
+  .cart .border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D95858;
+    transition: .3s ease-in;
+    width: 55px;
+    height: 52px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+}
+
+
+/* Search Section media */ 
+@media screen and (max-width: 771px) {
+
+  .search .box {
+    width: 50px;
+  }
+
+  .container-1 input#search{
+    width: 200px;
+    height: 50px;
+    background: #D9D9D9;
+    border: none;
+    font-size: 18px;
+    float: left;
+    color: #6C6C6C;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  .container-1 .icono{
+    position: absolute;
+    top: 50%;
+    margin-left: 17px;
+    margin-top: 17px;
+    z-index: 1;
+    color: #4e4e4e;
+  }
+
+  .tel i {
+    color: white;
+    font-size: 25px;
+    margin-right: 20px;
+  }
+
+  .tel p {
+    font-family: "Junge", cursive;
+    font-size: 15px;
+    margin: 0px;
+    color: rgb(209, 209, 209);
+  }
+  
+  .tel h2 {
+    font-size: 18px;
+    margin: 0px;
+    color: white;
+  }
+
+  .carrito i {
+    color: white;
+    font-size: 15px;
+  }
+
+  .cart .border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D95858;
+    transition: .3s ease-in;
+    width: 45px;
+    height: 42px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+}
+
+
+/* Search Section media */ 
+@media screen and (max-width: 562px) {
+  .tel i {
+    visibility: hidden;
+  }
+
+  .tel p {
+    visibility: hidden;
+  }
+  
+  .tel h2 {
+    visibility: hidden;
+  }
+}
+
+
 /* Products Section */ 
 .products {
     background-color: #F1F1F1;
@@ -353,6 +502,20 @@ body {
     color: #9e9e9e;
     font-size: 24px;
   }
+
+
+  /* Products Section media */ 
+@media screen and (max-width: 1024px) {
+  .title {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .p2 {
+    font-size: 20px;
+  }
+
+}
   
   
   
@@ -397,7 +560,8 @@ body {
     }
   }
   
-  
+
+  /* Products Section  */ 
   .products2 {
     background-color: #F1F1F1;
     text-align: center;
@@ -407,10 +571,12 @@ body {
   
   .products2 .pro-container2{
     display: flex;
-    justify-content: space-between;
-    padding-top: px;
-    padding-bottom: 60px;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 80px;
+    padding-top: 0px;
+    padding-bottom: 60px;
   }
   
   .products2 .pro2 {
@@ -475,7 +641,7 @@ body {
   }
 
 
-/* footer Section */ 
+/* services Section */ 
 .servicio {
   background-color: #F1F1F1;
   height: 600px;
@@ -488,10 +654,13 @@ body {
 }
 
 .container {
+  padding: 10px;
   display: flex;
   justify-content: center;
+  flex-direction: row;
   align-items: center;
   text-align: center;
+  gap: 20px;
 }
 
 .container .box h2 {
@@ -505,8 +674,8 @@ body {
   font-family: "Junge", cursive;
   color: #4A4A4A;
   font-size: 16px;
-  margin-left: 80px;
-  margin-right: 80px;
+  margin-left: 70px;
+  margin-right: 70px;
   margin-bottom: 40px;
 }
 
@@ -526,6 +695,11 @@ body {
 
 .container .box .btn:hover {
   background: #d34040;
+}
+
+/* services Section */ 
+@media screen and (max-width: 1024px) {
+
 }
 
 
