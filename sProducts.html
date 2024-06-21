@@ -9,6 +9,9 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap');
       @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+</style>
+
   </style>
 </head>
 <body>
@@ -36,7 +39,7 @@
     <!-- description Section -->
     <div class="product-details" id="product-details">
       <!-- Los detalles del producto se cargarán aquí dinámicamente -->
-  </div>
+    </div>
 
    <!-- Footer Section -->
    <footer>
@@ -58,12 +61,25 @@
     document.addEventListener('DOMContentLoaded', function() {
         const urlParams = new URLSearchParams(window.location.search);
         const productIndex = urlParams.get('product');
-
+        const extraProductIndex = urlParams.get('extraProduct');
+    
         fetch('datos.json')
             .then(response => response.json())
             .then(data => {
+                let product;
+                let isExtraProduct = false;
+    
                 if (productIndex !== null && data[productIndex]) {
-                    const product = data[productIndex];
+                    product = data[productIndex];
+                } else if (extraProductIndex !== null) {
+                    const extraProductIndexNumber = parseInt(extraProductIndex) + 3;
+                    if (data[extraProductIndexNumber]) {
+                        product = data[extraProductIndexNumber];
+                        isExtraProduct = true;
+                    }
+                }
+    
+                if (product) {
                     const container = document.getElementById('product-details');
                     
                     container.innerHTML = `
@@ -75,12 +91,12 @@
                             <h1 class="nombrePro">${product.nombre}</h1>
                             <hr>
                             <div class="horizontal">
-                                <h4 class="discount">${product.descuento}</h4>
+                                ${!isExtraProduct && product.descuento ? `<h4 class="discount">${product.descuento}</h4>` : ''}
                                 <h4 class="dolar">${product.precio}</h4>
                             </div>
-                            <p><span style="color:black;font-weight:bold">Color:</span> ${product.color}</p>
-                            <p><span style="color:black;font-weight:bold">Marca:</span> ${product.marca}</p>
-                            <p><span style="color:black;font-weight:bold">Material: </span>${product.material}</p>
+                            ${product.color ? `<p><span style="color:black;font-weight:bold">Color:</span> ${product.color}</p>` : ''}
+                            ${product.marca ? `<p><span style="color:black;font-weight:bold">Marca:</span> ${product.marca}</p>` : ''}
+                            ${product.material ? `<p><span style="color:black;font-weight:bold">Material: </span>${product.material}</p>` : ''}
                             <hr>
                             <h3 class="des">Sobre el Producto</h3>
                             <p class="parrafo">${product.descripcion}</p>
@@ -107,11 +123,11 @@
                         </div>
                     </div>
                     `;
-
+    
                     const selectElement = document.getElementById('quantity');
                     const priceElement = document.getElementById('total-price');
                     const unitPrice = parseFloat(product.precio.replace(/[^0-9.-]+/g,""));
-
+    
                     selectElement.addEventListener('change', function() {
                         const quantity = parseInt(this.value);
                         const totalPrice = (unitPrice * quantity).toFixed(2);
@@ -123,7 +139,7 @@
             })
             .catch(error => console.error('Error al cargar el producto:', error));
     });
-</script>
+    </script>
     
 </body>
 </html>

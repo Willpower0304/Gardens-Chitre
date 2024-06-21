@@ -97,73 +97,10 @@
 
       <!-- Products section-->
       <section class="products2">
-  
-        <div class="pro-container2">
-          <div class="pro2">
-            <img src="img/Tijeras.jpg" >
-            <div class="des2">
-              <h5 class="nameOfPro2">Tijera para podar </h5>
-              <div class="star2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4 class="dolar2">$29.99</h4>
-            </div>
-            <a href="#"><i class="fa-solid fa-cart-shopping   cart2"></i></a>
-          </div>
-
-          <div class="pro2">
-            <img src="img/Macetero.webp" >
-            <div class="des2">
-              <h5 class="nameOfPro2">Macetero de copa</h5>
-              <div class="star2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4 class="dolar2">$8.99</h4>
-            </div>
-            <a href="#"><i class="fa-solid fa-cart-shopping cart2"></i></a>
-          </div>
-
-          <div class="pro2">
-            <img src="img/planta.jpeg" >
-            <div class="des2">
-              <h5 class="nameOfPro2">planta de filodendro </h5>
-              <div class="star2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4 class="dolar2">$22.99</h4>
-            </div>
-            <a href="#"><i class="fa-solid fa-cart-shopping   cart2"></i></a>
-          </div>
-
-          <div class="pro2">
-            <img src="img/Azada.jpg" >
-            <div class="des2">
-              <h5 class="nameOfPro2">Azada Jardineria</h5>
-              <div class="star2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4 class="dolar2">$18.99</h4>
-            </div>
-            <a href="#"><i class="fa-solid fa-cart-shopping   cart2"></i></a>
-          </div>
+        <div class="pro-container2" id="product-container2">
+            <!-- Los productos se cargarán aquí dinámicamente -->
         </div>
-      </section>
+    </section>
 
 
     <!-- Servicies Section -->
@@ -216,8 +153,11 @@
             fetch('datos.json')
                 .then(response => response.json())
                 .then(data => {
-                    const container = document.getElementById('product-container');
-                    data.forEach((product, index) => {
+                    const container1 = document.getElementById('product-container');
+                    const container2 = document.getElementById('product-container2');
+        
+                    // Promotion Section
+                    data.slice(0, 3).forEach((product, index) => {
                         const productElement = document.createElement('div');
                         productElement.classList.add('pro');
         
@@ -237,12 +177,40 @@
                             </div>
                             <a href="sProducts.html?product=${index}"><i class="fa-solid fa-arrow-right cart"></i></a>
                         `;
-                        container.appendChild(productElement);
+                        container1.appendChild(productElement);
+                    });
+        
+                    // Normal products section
+                    data.slice(3).forEach((product, index) => {
+                        const productElement = document.createElement('div');
+                        productElement.classList.add('pro2');
+        
+                        productElement.innerHTML = `
+                            <img src="${product.imagen}" alt="${product.nombre}">
+                            <div class="des2">
+                                <h5 class="nameOfPro2">${product.nombre}</h5>
+                                <div class="star2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <h4 class="dolar2">${product.precio}</h4>
+                            </div>
+                            <a href="sProducts.html?extraProduct=${index}"><i class="fa-solid fa-arrow-right cart2"></i></a>
+                        `;
+                        container2.appendChild(productElement);
                     });
                 })
                 .catch(error => console.error('Error al cargar los productos:', error));
         });
         </script>
+
+
+
+
+
     
 </body>
 </html>

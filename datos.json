@@ -28,5 +28,45 @@
       "marca": "GreenLife",
       "material": "Cerámica y plástico",
       "descripcion": "Hermosa planta decorativa en un elegante pote de cerámica de color negro, ideal para interiores y exteriores. Añade un toque de naturaleza y frescura a cualquier espacio de tu hogar u oficina. Fácil de cuidar y mantener."
+    },
+    {
+      "imagen": "img/Tijeras.jpg",
+      "nombre": "Tijera para podar",
+      "descuento": "",
+      "precio": "$29.99",
+      "color": "Plateado y Naranjado",
+      "marca": "GardenPro",
+      "material": "Acero inoxidable y plástico",
+      "descripcion": "Tijera para podar de alta calidad, ideal para el cuidado de plantas y arbustos. Fabricada con acero inoxidable para un corte preciso y duradero, y con mangos ergonómicos de plástico para un uso cómodo y seguro. Perfecta para jardineros profesionales y aficionados."
+    },
+    {
+      "imagen": "img/Macetero.webp",
+      "nombre": "Macetero de copa",
+      "descuento": "",
+      "precio": "$8.99",
+      "color": "Negro",
+      "marca": "EcoGarden",
+      "material": "Plastico",
+      "descripcion": "Elegante macetero de copa, perfecto para realzar la belleza de tus plantas. Hecho de cerámica de alta calidad con un acabado blanco brillante, es ideal para interiores y exteriores. Su diseño sofisticado se adapta a cualquier estilo de decoración."
+    },
+    {
+      "imagen": "img/planta.jpeg",
+      "nombre": "Planta de filodendro",
+      "descuento": "",
+      "precio": "$22.99",
+      "color": "Verde",
+      "marca": "GreenLeaf",
+      "material": "Planta natural con maceta de plástico",
+      "descripcion": "Hermosa planta de filodendro, perfecta para interiores y exteriores. Con sus hojas grandes y verdes, añade un toque de naturaleza y frescura a cualquier espacio. Fácil de cuidar y mantener, ideal para aficionados a la jardinería y decoradores de interiores."
+    },
+    {
+      "imagen": "img/Azada.jpg",
+      "nombre": "Azada Jardineria",
+      "descuento": "",
+      "precio": "$18.99",
+      "color": "Negro",
+      "marca": "GardenMaster",
+      "material": "Acero al carbono y plastico",
+      "descripcion": "Azada de jardinería de alta calidad, ideal para preparar y mantener tus jardines y huertos. Fabricada con acero al carbono para una durabilidad superior y un mango de madera ergonómico que ofrece comodidad y facilidad de uso. Perfecta para jardineros aficionados y profesionales."
     }
   ]

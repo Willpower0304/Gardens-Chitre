@@ -454,7 +454,7 @@ body {
   
   .products .pro .des h4 {
     font-size: 13px;
-    font-family: "Junge", cursive;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     color:  #707070;
     margin: 0;
@@ -465,6 +465,7 @@ body {
     color:  #4e4e4e;
     text-decoration: line-through;
     margin: 0;
+    font-family: "Inter", sans-serif;
   }
   
   .products .pro .cart{
@@ -622,7 +623,8 @@ body {
   .products2 .pro2 .des2 h4 {
     padding-top: 7px;
     font-size: 13px;
-    font-family: "Junge", cursive;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
     color:  #818181;
     margin: 0;
   }

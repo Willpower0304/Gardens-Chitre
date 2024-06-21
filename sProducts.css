@@ -160,18 +160,20 @@ body {
   display: flex;
   flex-direction: row;
   gap: 30px;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .container .box2 .horizontal .discount {
   margin: 0px;
   color: #6C6C6C;
   text-decoration: line-through;
+  font-family: "Inter", sans-serif;
 }
 
 .container .box2 .horizontal .dolar {
   margin: 0px;
   color: #8C8C8C;
+  font-family: "Inter", sans-serif;
 }
 
 .container .box2 p {
@@ -206,7 +208,8 @@ body {
 }
 
 .container .box3 .card .dolar {
-  font-size: 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
   margin: 0px;
   color: #8C8C8C;
 }
@@ -240,6 +243,11 @@ body {
   border-radius: 10px;
   margin-top: 20px;
   margin-bottom: 5px;
+  transition: .1s ease-in;
+}
+
+.container .box3 .card a:hover {
+  background-color: #f7bc64;
 }
 
 
