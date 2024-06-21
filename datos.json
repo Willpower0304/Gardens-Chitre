@@ -1,0 +1,32 @@
+[
+    {
+      "imagen": "img/guantes.jpg",
+      "nombre": "Guantes Jardinería",
+      "descuento": "$59.99",
+      "precio": "$39.99",
+      "color": "Verde",
+      "marca": "GardenPro",
+      "material": "Poliéster y goma",
+      "descripcion": "Guantes de jardinería de alta calidad, diseñados para proteger tus manos mientras trabajas en el jardín. Fabricados con material resistente y duradero, ofrecen comodidad y flexibilidad para realizar diversas tareas de jardinería." 
+    },
+    {
+      "imagen": "img/cortadora.jpg",
+      "nombre": "Cortadora De Cesped",
+      "descuento": "$499.99",
+      "precio": "$249.99",
+      "color": "Blanco y Rojo",
+      "marca": "GreenMaster",
+      "material": "Acero y plástico resistente",
+      "descripcion": "Cortadora de césped de alta eficiencia, ideal para mantener tu jardín impecable. Cuenta con una potente motor, diseño ergonómico y agarraderos para facilitar el movimiento. Perfecta para jardines de tamaño mediano a grande."
+    },
+    {
+      "imagen": "img/planta_pote.webp",
+      "nombre": "Planta con Pote",
+      "descuento": "$19.99",
+      "precio": "$9.99",
+      "color": "Verde (planta) y Negro (pote)",
+      "marca": "GreenLife",
+      "material": "Cerámica y plástico",
+      "descripcion": "Hermosa planta decorativa en un elegante pote de cerámica de color negro, ideal para interiores y exteriores. Añade un toque de naturaleza y frescura a cualquier espacio de tu hogar u oficina. Fácil de cuidar y mantener."
+    }
+  ]

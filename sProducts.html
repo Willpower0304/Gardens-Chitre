@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitre Gardens</title>
+    <link rel="stylesheet" href="sProducts.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+  </style>
+</head>
+<body>
+
+  <!-- Navbar Section -->
+  <section class="body1">
+    <header class="header">
+      <a href="Tienda.html" class="logo"><img src="img/logo_bueno.svg" alt=""></a>
+
+      <nav class="navbar">
+        <input type="checkbox" class="mycheckBox" id="myCheck">
+        <label for="myCheck" class="checkButton">
+          <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+          <li><a href="Home.html" class="active">Inicio</a><li>
+          <li><a href="Nosotros.html">Sobre Nosotros</a></li>
+          <li><a href="Tienda.html">Tienda</a></li>
+          <li><a href="Iniciar.html">Iniciar Sesión</a></li>
+      </ul>
+      </nav>
+    </header>
+
+
+    <!-- description Section -->
+    <div class="product-details" id="product-details">
+      <!-- Los detalles del producto se cargarán aquí dinámicamente -->
+  </div>
+
+   <!-- Footer Section -->
+   <footer>
+    <div class="footer-logo">
+        <img src="img/Gardens.svg" alt="logo horizontal">
+    </div>
+    <ul class="social-media">
+        <li><a href="#instagram" class="instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
+        <li><a href="#facebook" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+        <li><a href="#twitter" class="twitter"><i class="fab fa-x-twitter"></i> Twitter</a></li>
+        <li><a href="#whatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+    </ul>
+    <hr class="linea">
+    <p>&copy; 2024 Chitre Gardens. Todos los derechos reservados.</p>
+  </footer>
+  
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productIndex = urlParams.get('product');
+
+        fetch('datos.json')
+            .then(response => response.json())
+            .then(data => {
+                if (productIndex !== null && data[productIndex]) {
+                    const product = data[productIndex];
+                    const container = document.getElementById('product-details');
+                    
+                    container.innerHTML = `
+                    <div class="container">
+                        <div class="box1">
+                            <img src="${product.imagen}" alt="${product.nombre}">
+                        </div>
+                        <div class="box2">
+                            <h1 class="nombrePro">${product.nombre}</h1>
+                            <hr>
+                            <div class="horizontal">
+                                <h4 class="discount">${product.descuento}</h4>
+                                <h4 class="dolar">${product.precio}</h4>
+                            </div>
+                            <p><span style="color:black;font-weight:bold">Color:</span> ${product.color}</p>
+                            <p><span style="color:black;font-weight:bold">Marca:</span> ${product.marca}</p>
+                            <p><span style="color:black;font-weight:bold">Material: </span>${product.material}</p>
+                            <hr>
+                            <h3 class="des">Sobre el Producto</h3>
+                            <p class="parrafo">${product.descripcion}</p>
+                        </div>
+                        <div class="box3">
+                            <div class="card">
+                                <h4 class="dolar" id="total-price">${product.precio}</h4>
+                                <h4 class="dispo">Disponible</h4>
+                                <select id="quantity" class="dropdown">
+                                    <option class="opcion" value="" disabled selected hidden>cantidad</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                                <a href="#" class="boton">Añadir al carrito</a>
+                            </div> 
+                        </div>
+                    </div>
+                    `;
+
+                    const selectElement = document.getElementById('quantity');
+                    const priceElement = document.getElementById('total-price');
+                    const unitPrice = parseFloat(product.precio.replace(/[^0-9.-]+/g,""));
+
+                    selectElement.addEventListener('change', function() {
+                        const quantity = parseInt(this.value);
+                        const totalPrice = (unitPrice * quantity).toFixed(2);
+                        priceElement.textContent = `$${totalPrice}`;
+                    });
+                } else {
+                    document.getElementById('product-details').innerHTML = '<p>Producto no encontrado.</p>';
+                }
+            })
+            .catch(error => console.error('Error al cargar el producto:', error));
+    });
+</script>
+    
+</body>
+</html>

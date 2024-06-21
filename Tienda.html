@@ -68,57 +68,8 @@
           Productos Promocionales
         </p>
 
-        <div class="pro-container">
-          <div class="pro">
-            <img src="img/guantes.jpg" >
-            <div class="des">
-              <h5 class="nameOfPro">Guantes Jardinería </h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4 class="discount">$59.99</h4>
-              <h4 class="dolar">$39.99</h4>
-            </div>
-            <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-          </div>
-
-          <div class="pro">
-            <img src="img/cortadora.jpg" >
-            <div class="des">
-              <h5 class="nameOfPro">Cortadora De Cesped</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4 class="discount">$499.99</h4>
-              <h4 class="dolar">$249.99</h4>
-            </div>
-            <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-          </div>
-
-          <div class="pro">
-            <img src="img/servicios.jpg" >
-            <div class="des">
-              <h5 class="nameOfPro">Servicio de corte de césped</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4 class="discount">$19.99</h4>
-              <h4 class="dolar">$9.99</h4>
-            </div>
-            <a href="#"><i class="fa-solid fa-cart-shopping   cart"></i></a>
-          </div>
+        <div class="pro-container" id="product-container">
+          <!-- Los productos se cargarán aquí dinámicamente -->
         </div>
       </section>
 
@@ -257,6 +208,41 @@
     </footer>
 
       <script src="https://kit.fontawesome.com/3c5fad524f.js" crossorigin="anonymous"></script>
+
+      
+      <!-- script de las ofertas section -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('datos.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('product-container');
+                    data.forEach((product, index) => {
+                        const productElement = document.createElement('div');
+                        productElement.classList.add('pro');
+        
+                        productElement.innerHTML = `
+                            <img src="${product.imagen}" alt="${product.nombre}">
+                            <div class="des">
+                                <h5 class="nameOfPro">${product.nombre}</h5>
+                                <div class="star">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <h4 class="discount">${product.descuento}</h4>
+                                <h4 class="dolar">${product.precio}</h4>
+                            </div>
+                            <a href="sProducts.html?product=${index}"><i class="fa-solid fa-arrow-right cart"></i></a>
+                        `;
+                        container.appendChild(productElement);
+                    });
+                })
+                .catch(error => console.error('Error al cargar los productos:', error));
+        });
+        </script>
     
 </body>
 </html>
