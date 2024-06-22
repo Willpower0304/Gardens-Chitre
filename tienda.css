@@ -665,6 +665,11 @@ body {
   gap: 20px;
 }
 
+.container .box img {
+  width: 128px;
+  height: 128px;
+}
+
 .container .box h2 {
   font-size: 30px;
   font-weight: bold;

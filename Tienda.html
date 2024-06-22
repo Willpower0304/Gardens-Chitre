@@ -98,25 +98,8 @@
     <!-- Servicies Section -->
     <section class="servicio">
       <h1>Servicios</h1>
-      <div class="container">
-        <div class="box">
-          <img src="img/arbol.png" alt="arbol">
-          <h2>Diseño y Creación de Jardines</h2>
-          <p>Creamos jardines urbanos y modernos con diseños personalizados y a su gusto</p>
-          <a href="#" class="btn">Ver Más</a>
-        </div>
-        <div class="box">
-          <img src="img/jardineria.png" alt="arbol">
-          <h2>Mantenimiento de Jardín</h2>
-          <p>Realizamos un mantenimiento integral de plantas y áreas verdes</p>
-          <a href="#" class="btn">Ver Más</a>
-        </div>
-        <div class="box">
-          <img src="img/hierba.png" alt="arbol">
-          <h2>Instalación de Grama Natural</h2>
-          <p>Instalamos las mejores variedades de grama para empresas y residencias</p>
-          <a href="#" class="btn">Ver Más</a>
-        </div>
+      <div class="container" id="servicios-container">
+          <!-- Los servicios se cargarán aquí dinámicamente -->
       </div>
     </section>
 
@@ -255,6 +238,33 @@
             filterProducts('todos');
         });
       </script>
+
+
+      <!-- script de la seccion de servicios -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('Servicios.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('servicios-container');
+                    container.innerHTML = ''; // Limpiar el contenedor antes de agregar servicios
+    
+                    data.forEach(service => {
+                        const serviceElement = document.createElement('div');
+                        serviceElement.classList.add('box');
+    
+                        serviceElement.innerHTML = `
+                            <img src="${service.imagen}" alt="${service.nombre}">
+                            <h2>${service.nombre}</h2>
+                            <p>${service.info}</p>
+                            <a href="sServ.html?id=${service.id}" class="btn">Ver Más</a>
+                        `;
+                        container.appendChild(serviceElement);
+                    });
+                })
+                .catch(error => console.error('Error al cargar los servicios:', error));
+        });
+    </script>
 
 
 </body>

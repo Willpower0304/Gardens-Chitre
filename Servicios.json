@@ -1,0 +1,29 @@
+[
+    {
+        "id": "1",
+        "imagen": "img/diseño.png",
+        "nombre": "Diseño y Creación de jardines",
+        "info": "Creamos jardines urbanos y modernos con diseños personalizados y a su gusto",
+        "descripcion": "Nuestro servicio de Diseño y Creación de Jardines transforma cualquier espacio exterior en un oasis de belleza y funcionalidad. Especializados en jardines urbanos y modernos, ofrecemos diseños personalizados que se adaptan a sus preferencias y necesidades. Desde la selección de plantas y materiales hasta la disposición de elementos decorativos y funcionales, cada jardín es único y elaborado con atención al detalle. Trabajamos de la mano con nuestros clientes para asegurarnos de que el resultado final no solo sea visualmente atractivo, sino también práctico y sostenible. Ideal para hogares, oficinas y espacios públicos que buscan un toque de naturaleza y modernidad.",
+        "precio": "9.99",
+        "imagen2": "img/diseño-ejemplo.jpg"
+    },
+    {
+        "id": "2",
+        "imagen": "img/mantenimiento.png",
+        "nombre": "Mantenimiento de Jardín",
+        "info": "Realizamos un mantenimiento integral de plantas y áreas verdes",
+        "descripcion": "Nuestro servicio de Mantenimiento de Jardín se encarga de mantener sus áreas verdes en perfecto estado durante todo el año. Ofrecemos un cuidado integral que incluye poda, riego, fertilización, control de plagas y enfermedades, y limpieza general. Nuestro equipo de expertos jardineros utiliza técnicas y herramientas modernas para asegurar que su jardín luzca siempre saludable y estéticamente agradable. Ya sea para jardines residenciales, comerciales o espacios públicos, nos adaptamos a las necesidades específicas de cada cliente, garantizando un servicio de alta calidad y resultados excepcionales.",
+        "precio": "5.99",
+        "imagen2": "img/arreglo.jpg"
+    },
+    {
+        "id": "3",
+        "imagen": "img/cesped.png",
+        "nombre": "Instalación de Grama Natural",
+        "info": "Instalamos las mejores variedades de grama para empresas y residencias",
+        "descripcion": "Nuestro servicio de Instalación de Grama Natural está diseñado para transformar sus áreas exteriores en espacios verdes y vibrantes. Trabajamos con las mejores variedades de grama, seleccionadas por su durabilidad, apariencia y adaptabilidad al clima local. Ya sea para empresas, residencias o espacios públicos, nuestro equipo de expertos se encarga de todo el proceso, desde la preparación del terreno hasta la instalación y el mantenimiento inicial. Garantizamos una cobertura uniforme y saludable que mejora la estética y funcionalidad de su espacio exterior. Con nuestro servicio, podrá disfrutar de un césped verde, denso y libre de malezas durante todo el año.",
+        "precio": "14.99",
+        "imagen2": "img/instalacion.webp"
+    }
+]

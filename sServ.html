@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitre Gardens</title>
+    <link rel="stylesheet" href="sServ.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    </style>
+</head>
+<body>
+
+  <!-- Navbar Section -->
+  <section class="body1">
+    <header class="header">
+      <a href="Tienda.html" class="logo"><img src="img/logo_bueno.svg" alt=""></a>
+
+      <nav class="navbar">
+        <input type="checkbox" class="mycheckBox" id="myCheck">
+        <label for="myCheck" class="checkButton">
+          <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+          <li><a href="Home.html" class="active">Inicio</a><li>
+          <li><a href="Nosotros.html">Sobre Nosotros</a></li>
+          <li><a href="Tienda.html">Tienda</a></li>
+          <li><a href="Iniciar.html">Iniciar Sesión</a></li>
+      </ul>
+      </nav>
+    </header>
+
+
+    <!-- services Section -->
+    <section class="servicio-detallado">
+        <div class="container" id="servicio-detalle">
+            <!-- La información del servicio se cargará aquí dinámicamente -->
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+   <footer>
+    <div class="footer-logo">
+        <img src="img/Gardens.svg" alt="logo horizontal">
+    </div>
+    <ul class="social-media">
+        <li><a href="#instagram" class="instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
+        <li><a href="#facebook" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+        <li><a href="#twitter" class="twitter"><i class="fab fa-x-twitter"></i> Twitter</a></li>
+        <li><a href="#whatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+    </ul>
+    <hr class="linea">
+    <p>&copy; 2024 Chitre Gardens. Todos los derechos reservados.</p>
+  </footer>
+
+     <!-- services Information -->
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceId = urlParams.get('id');
+
+            fetch('Servicios.json')
+                .then(response => response.json())
+                .then(data => {
+                    const servicio = data.find(s => s.id === serviceId);
+                    if (servicio) {
+                        const container = document.getElementById('servicio-detalle');
+                        container.innerHTML = `
+                            <section class="services-container">
+                                <div class="container">
+                                    <h1>${servicio.nombre}</h1>
+                                    <hr>
+                                </div>
+                                <div class="box-container">
+                                    <div class="box">
+                                        <p>${servicio.descripcion}</p>
+                                    </div>
+                                    <div class="box2">    
+                                        <div class="card">
+                                            <h4 class="dolar">$${servicio.precio}</h4>
+                                            <h4 class="dispo">Disponible</h4>
+                                            <a href="#" class="boton">Añadir al carrito</a>
+                                        </div>
+                                    </div>     
+                                </div>
+                                <div class="box3">
+                                        <img src="${servicio.imagen2}" alt="img-servicio2">
+                                </div>
+                            </section>
+                        `;
+                    } else {
+                        document.getElementById('servicio-detalle').innerHTML = '<p>Servicio no encontrado.</p>';
+                    }
+                })
+                .catch(error => console.error('Error al cargar el servicio:', error));
+        });
+    </script>
+
+    <script src="https://kit.fontawesome.com/3c5fad524f.js" crossorigin="anonymous"></script>
+    
+</body>
+</html>
