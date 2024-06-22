@@ -37,7 +37,8 @@
       "color": "Plateado y Naranjado",
       "marca": "GardenPro",
       "material": "Acero inoxidable y plástico",
-      "descripcion": "Tijera para podar de alta calidad, ideal para el cuidado de plantas y arbustos. Fabricada con acero inoxidable para un corte preciso y duradero, y con mangos ergonómicos de plástico para un uso cómodo y seguro. Perfecta para jardineros profesionales y aficionados."
+      "descripcion": "Tijera para podar de alta calidad, ideal para el cuidado de plantas y arbustos. Fabricada con acero inoxidable para un corte preciso y duradero, y con mangos ergonómicos de plástico para un uso cómodo y seguro. Perfecta para jardineros profesionales y aficionados.",
+      "categoria": "herramientas"
     },
     {
       "imagen": "img/Macetero.webp",
@@ -47,7 +48,19 @@
       "color": "Negro",
       "marca": "EcoGarden",
       "material": "Plastico",
-      "descripcion": "Elegante macetero de copa, perfecto para realzar la belleza de tus plantas. Hecho de cerámica de alta calidad con un acabado blanco brillante, es ideal para interiores y exteriores. Su diseño sofisticado se adapta a cualquier estilo de decoración."
+      "descripcion": "Elegante macetero de copa, perfecto para realzar la belleza de tus plantas. Hecho de cerámica de alta calidad con un acabado blanco brillante, es ideal para interiores y exteriores. Su diseño sofisticado se adapta a cualquier estilo de decoración.",
+      "categoria": "decoracion"
+    },
+    {
+      "imagen": "img/gnomo.webp",
+      "nombre": "Gnomo",
+      "descuento": "",
+      "precio": "$5.99",
+      "color": "Rojo y Azul",
+      "marca": "EcoGarden",
+      "material": "Plastico",
+      "descripcion": "Adorable gnomo de jardín, perfecto para añadir un toque de fantasía y diversión a tus espacios verdes. Fabricado en plástico resistente a la intemperie, con colores vivos y detalles encantadores. Ideal para decorar jardines, patios y maceteros.",
+      "categoria": "decoracion"
     },
     {
       "imagen": "img/planta.jpeg",
@@ -57,7 +70,19 @@
       "color": "Verde",
       "marca": "GreenLeaf",
       "material": "Planta natural con maceta de plástico",
-      "descripcion": "Hermosa planta de filodendro, perfecta para interiores y exteriores. Con sus hojas grandes y verdes, añade un toque de naturaleza y frescura a cualquier espacio. Fácil de cuidar y mantener, ideal para aficionados a la jardinería y decoradores de interiores."
+      "descripcion": "Hermosa planta de filodendro, perfecta para interiores y exteriores. Con sus hojas grandes y verdes, añade un toque de naturaleza y frescura a cualquier espacio. Fácil de cuidar y mantener, ideal para aficionados a la jardinería y decoradores de interiores.",
+      "categoria": "plantas"
+    },
+    {
+      "imagen": "img/jazmin.jpg",
+      "nombre": "Planta de Jazmin",
+      "descuento": "",
+      "precio": "$17.99",
+      "color": "Verde",
+      "marca": "GreenLeaf",
+      "material": "Planta natural con maceta de plástico",
+      "descripcion": "Encantadora planta de jazmín que embellece cualquier espacio con sus delicadas flores blancas y su aroma agradable. Ideal para decorar tanto interiores como exteriores, esta planta es fácil de cuidar y es perfecta para añadir un toque de elegancia y frescura a tu hogar o jardín.",
+      "categoria": "plantas"
     },
     {
       "imagen": "img/Azada.jpg",
@@ -67,6 +92,29 @@
       "color": "Negro",
       "marca": "GardenMaster",
       "material": "Acero al carbono y plastico",
-      "descripcion": "Azada de jardinería de alta calidad, ideal para preparar y mantener tus jardines y huertos. Fabricada con acero al carbono para una durabilidad superior y un mango de madera ergonómico que ofrece comodidad y facilidad de uso. Perfecta para jardineros aficionados y profesionales."
+      "descripcion": "Azada de jardinería de alta calidad, ideal para preparar y mantener tus jardines y huertos. Fabricada con acero al carbono para una durabilidad superior y un mango de madera ergonómico que ofrece comodidad y facilidad de uso. Perfecta para jardineros aficionados y profesionales.",
+      "categoria": "herramientas"
+    },
+    {
+      "imagen": "img/pala.webp",
+      "nombre": "Pala Jardineria",
+      "descuento": "",
+      "precio": "$28.99",
+      "color": "Negro",
+      "marca": "GardenMaster",
+      "material": "Acero al carbono y madera",
+      "descripcion": "Robusta pala de jardinería diseñada para trabajos pesados en tu jardín o huerto. Fabricada con acero al carbono de alta resistencia para mayor durabilidad y un mango ergonómico de madera que proporciona un agarre cómodo y seguro. Ideal para excavar, trasplantar y manipular tierra con eficiencia, siendo imprescindible tanto para jardineros aficionados como profesionales.",
+      "categoria": "herramientas"
+    },
+    {
+      "imagen": "img/flamencos.webp",
+      "nombre": "Flamencos",
+      "descuento": "",
+      "precio": "$12.99",
+      "color": "Rosa",
+      "marca": "GardenMaster",
+      "material": "Plastico",
+      "descripcion": "Encantadores flamencos decorativos para embellecer tu jardín o patio con estilo y color. Fabricados en plástico resistente y diseñados en un llamativo color rosa, estos flamencos son ideales para añadir un toque divertido y elegante a tu espacio al aire libre. Perfectos como elemento decorativo para entusiastas de la jardinería y amantes de la estética exterior.",
+      "categoria": "decoracion"
     }
   ]

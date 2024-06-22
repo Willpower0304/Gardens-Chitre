@@ -77,22 +77,14 @@
       <!-- options section a -->
       <section class="tienda">
         <div class="seccion">
-          <ul>
-            <li>
-              <a href="#todos">Todos</a>
-            </li>
-            <li>
-              <a href="#herramientas">Herramientas</a>
-            </li>
-            <li>
-              <a href=#decoracion">Decoración</a>
-            </li>
-            <li>
-              <a href="#plantas">Plantas</a>
-            </li>
-          </ul>
-      </div>
-      </section>
+            <ul>
+                <li><a href="" data-category="todos">Todos</a></li>
+                <li><a href="" data-category="herramientas">Herramientas</a></li>
+                <li><a href="" data-category="decoracion">Decoración</a></li>
+                <li><a href="" data-category="plantas">Plantas</a></li>
+            </ul>
+        </div>
+    </section>
 
 
       <!-- Products section-->
@@ -147,7 +139,7 @@
       <script src="https://kit.fontawesome.com/3c5fad524f.js" crossorigin="anonymous"></script>
 
       
-      <!-- script de las ofertas section -->
+      <!-- script de los productos promocionales y normales section -->
       <script>
         document.addEventListener('DOMContentLoaded', function() {
             fetch('datos.json')
@@ -208,9 +200,62 @@
         </script>
 
 
+      <!-- script de los cambios por los <a> -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const categories = {
+                todos: () => true,
+                herramientas: product => product.categoria === 'herramientas',
+                decoracion: product => product.categoria === 'decoracion',
+                plantas: product => product.categoria === 'plantas'
+            };
+
+            function filterProducts(category) {
+                fetch('datos.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const filteredData = data.slice(3).filter(categories[category]);
+                        const container2 = document.getElementById('product-container2');
+                        container2.innerHTML = '';
+
+                        filteredData.forEach((product, index) => {
+                            const productElement = document.createElement('div');
+                            productElement.classList.add('pro2');
+
+                            productElement.innerHTML = `
+                                <img src="${product.imagen}" alt="${product.nombre}">
+                                <div class="des2">
+                                    <h5 class="nameOfPro2">${product.nombre}</h5>
+                                    <div class="star2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <h4 class="dolar2">${product.precio}</h4>
+                                </div>
+                                <a href="sProducts.html?extraProduct=${index}"><i class="fa-solid fa-arrow-right cart2"></i></a>
+                            `;
+                            container2.appendChild(productElement);
+                        });
+                    })
+                    .catch(error => console.error('Error al cargar los productos:', error));
+            }
+
+            document.querySelectorAll('.tienda a').forEach(anchor => {
+                anchor.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const category = this.getAttribute('data-category');
+                    filterProducts(category);
+                });
+            });
+
+            // Cargar todos los productos normales al iniciar
+            filterProducts('todos');
+        });
+      </script>
 
 
-
-    
 </body>
 </html>
