@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitre Gardens</title>
+    <link rel="stylesheet" href="carrito.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+  </style>
+</head>
+<body>
+
+    <!-- Navbar Section -->
+  <section class="body1">
+    <header class="header">
+      <a href="carrito.html" class="logo"><img src="img/logo_bueno.svg" alt=""></a>
+
+      <nav class="navbar">
+        <input type="checkbox" class="mycheckBox" id="myCheck">
+        <label for="myCheck" class="checkButton">
+          <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+          <li><a href="Home.html" class="active">Inicio</a><li>
+          <li><a href="Nosotros.html">Sobre Nosotros</a></li>
+          <li><a href="Tienda.html">Tienda</a></li>
+          <li><a href="Iniciar.html">Iniciar Sesión</a></li>
+      </ul>
+      </nav>
+    </header>
+
+
+    <!-- Information of products or services section container -->
+    <section class="container">
+        <h1>Carrito</h1>
+        <div class="info-pro">
+            <div class="info-box">
+                <div class="column-eliminar">
+                    <h3>Eliminar</h3>
+                    <a href="#"><i class="fa-solid fa-xmark X"></i></a>
+                </div>
+                <div class="pro-serv">
+                    <h3>Producto o Servicio</h3>
+                    <p>{Nombre del Producto o Servicio añadiddo al carrito}</p>
+                </div>
+                <div class="pro-serv-precio">
+                    <h3>Precio</h3>
+                    <p>$00.00</p>
+                </div>
+                <div class="pro-serv-cant">
+                    <h3>Cantidad</h3>
+                    <select id="quantity" class="dropdown">
+                        <option class="opcion" value="" disabled selected hidden></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <div class="pro-serv-subtotal">
+                    <h3>Subtotal</h3>
+                    <p>$00.00</p>
+                    <a href="#" class="boton">Actualizar Carrito</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Total price of the products or services section-container -->
+     <section class="container2">
+        <h1>Total del Carrito</h1>
+        <div class="container2-border">
+            <div class="row">
+                <div class="box">
+                    <h3>Subtotal</h3>
+                    <p>$00.00</p>
+                </div>
+                <div class="box2">
+                    <h3>Total</h3>
+                    <p>$00.00</p>
+                </div>
+            </div>
+        </div>
+        <a href="#">Finalizar Compra</a>
+     </section>
+
+
+
+
+    <script src="https://kit.fontawesome.com/3c5fad524f.js" crossorigin="anonymous"></script>
+    
+</body>
+</html>
