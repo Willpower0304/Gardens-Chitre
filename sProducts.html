@@ -59,23 +59,24 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
         const urlParams = new URLSearchParams(window.location.search);
-        const productIndex = urlParams.get('product');
-        const extraProductIndex = urlParams.get('extraProduct');
+        const productId = urlParams.get('product');
+        const extraProductId = urlParams.get('extraProduct');
     
         fetch('datos.json')
             .then(response => response.json())
             .then(data => {
                 let product;
-                let isExtraProduct = false;
     
-                if (productIndex !== null && data[productIndex]) {
-                    product = data[productIndex];
-                } else if (extraProductIndex !== null) {
-                    const extraProductIndexNumber = parseInt(extraProductIndex) + 3;
-                    if (data[extraProductIndexNumber]) {
-                        product = data[extraProductIndexNumber];
-                        isExtraProduct = true;
+                if (productId !== null) {
+                    // Buscar producto promocional por índice
+                    const promotionalIndex = parseInt(productId);
+                    const promotionalProducts = data.filter(p => p.promocion === "true");
+                    if (promotionalIndex >= 0 && promotionalIndex < promotionalProducts.length) {
+                        product = promotionalProducts[promotionalIndex];
                     }
+                } else if (extraProductId !== null) {
+                    // Buscar producto normal por ID
+                    product = data.find(p => p.id === extraProductId && p.promocion === "false");
                 }
     
                 if (product) {
@@ -90,7 +91,7 @@
                             <h1 class="nombrePro">${product.nombre}</h1>
                             <hr>
                             <div class="horizontal">
-                                ${!isExtraProduct && product.descuento ? `<h4 class="discount">${product.descuento}</h4>` : ''}
+                                ${product.descuento ? `<h4 class="discount">${product.descuento}</h4>` : ''}
                                 <h4 class="dolar">${product.precio}</h4>
                             </div>
                             ${product.color ? `<p><span style="color:black;font-weight:bold">Color:</span> ${product.color}</p>` : ''}
