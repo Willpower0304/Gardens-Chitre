@@ -47,7 +47,7 @@
         <img src="img/Gardens.svg" alt="logo horizontal">
     </div>
     <ul class="social-media">
-        <li><a href="#instagram" class="instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://www.instagram.com/chitresgardens/" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
         <li><a href="#facebook" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a></li>
         <li><a href="#twitter" class="twitter"><i class="fab fa-x-twitter"></i> Twitter</a></li>
         <li><a href="#whatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
@@ -61,7 +61,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const serviceId = urlParams.get('id');
-
+    
             fetch('Servicios.json')
                 .then(response => response.json())
                 .then(data => {
@@ -82,15 +82,45 @@
                                         <div class="card">
                                             <h4 class="dolar">$${servicio.precio}</h4>
                                             <h4 class="dispo">Disponible</h4>
-                                            <a href="#" class="boton">Añadir al carrito</a>
+                                            <a href="#" id="add-to-cart" class="boton">Añadir al carrito</a>
                                         </div>
                                     </div>     
                                 </div>
                                 <div class="box3">
-                                        <img src="${servicio.imagen2}" alt="img-servicio2">
+                                    <img src="${servicio.imagen2}" alt="img-servicio2">
                                 </div>
                             </section>
                         `;
+    
+                        document.getElementById('add-to-cart').addEventListener('click', function(event) {
+                            event.preventDefault();
+                            let cart = localStorage.getItem('cart');
+                            if (!cart) {
+                                cart = [];
+                            } else {
+                                cart = JSON.parse(cart);
+                            }
+    
+                            // Verificar si el servicio ya está en el carrito
+                            const alreadyInCart = cart.some(item => item.id === servicio.id && item.tipo === 'servicio');
+                            if (alreadyInCart) {
+                                alert("Este servicio ya está en el carrito.");
+                                return;
+                            }
+    
+                            const cartItem = {
+                                id: servicio.id,
+                                nombre: servicio.nombre,
+                                precio: servicio.precio,
+                                tipo: 'servicio', 
+                                cantidad: 1,
+                                precioTotal: servicio.precio
+                            };
+    
+                            cart.push(cartItem);
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            alert("Servicio añadido al carrito.");
+                        });
                     } else {
                         document.getElementById('servicio-detalle').innerHTML = '<p>Servicio no encontrado.</p>';
                     }

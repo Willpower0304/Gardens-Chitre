@@ -46,7 +46,7 @@
         <img src="img/Gardens.svg" alt="logo horizontal">
     </div>
     <ul class="social-media">
-        <li><a href="#instagram" class="instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://www.instagram.com/chitresgardens/" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
         <li><a href="#facebook" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a></li>
         <li><a href="#twitter" class="twitter"><i class="fab fa-x-twitter"></i> Twitter</a></li>
         <li><a href="#whatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
@@ -118,7 +118,7 @@
                                     <option value="9">9</option>
                                     <option value="10">10</option>
                                 </select>
-                                <a href="#" class="boton">Añadir al carrito</a>
+                                <a href="#" id="add-to-cart" class="boton">Añadir al carrito</a>
                             </div> 
                         </div>
                     </div>
@@ -132,6 +132,41 @@
                         const quantity = parseInt(this.value);
                         const totalPrice = (unitPrice * quantity).toFixed(2);
                         priceElement.textContent = `$${totalPrice}`;
+                    });
+    
+                    const addToCartButton = document.getElementById('add-to-cart');
+                    addToCartButton.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        const quantity = parseInt(selectElement.value);
+                        if (isNaN(quantity) || quantity <= 0) {
+                            alert("Por favor, selecciona una cantidad válida.");
+                            return;
+                        }
+                        const totalPrice = (unitPrice * quantity).toFixed(2);
+                        const cartItem = {
+                            id: product.id,
+                            nombre: product.nombre,
+                            imagen: product.imagen,
+                            precioUnitario: product.precio,
+                            cantidad: quantity,
+                            precioTotal: `$${totalPrice}`
+                        };
+    
+                        let cart = localStorage.getItem('cart');
+                        if (!cart) {
+                            cart = [];
+                        } else {
+                            cart = JSON.parse(cart);
+                        }
+    
+                        const existingProductIndex = cart.findIndex(item => item.id === cartItem.id);
+                        if (existingProductIndex === -1) {
+                            cart.push(cartItem);
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            alert("Producto añadido al carrito.");
+                        } else {
+                            alert("El producto ya está en el carrito.");
+                        }
                     });
                 } else {
                     document.getElementById('product-details').innerHTML = '<p>Producto no encontrado.</p>';

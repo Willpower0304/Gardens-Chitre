@@ -34,46 +34,12 @@
 
 
     <!-- Information of products or services section container -->
-    <section class="container">
-        <h1>Carrito</h1>
-        <div class="info-pro">
-            <div class="info-box">
-                <div class="column-eliminar">
-                    <h3>Eliminar</h3>
-                    <a href="#"><i class="fa-solid fa-xmark X"></i></a>
-                </div>
-                <div class="pro-serv">
-                    <h3>Producto o Servicio</h3>
-                    <p>{Nombre del Producto o Servicio añadiddo al carrito}</p>
-                </div>
-                <div class="pro-serv-precio">
-                    <h3>Precio</h3>
-                    <p>$00.00</p>
-                </div>
-                <div class="pro-serv-cant">
-                    <h3>Cantidad</h3>
-                    <select id="quantity" class="dropdown">
-                        <option class="opcion" value="" disabled selected hidden></option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="pro-serv-subtotal">
-                    <h3>Subtotal</h3>
-                    <p>$00.00</p>
-                    <a href="#" class="boton">Actualizar Carrito</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="container">
+    <h1>Carrito</h1>
+    <div id="cart-container" class="info-pro">
+        <!-- El contenido del carrito se generará dinámicamente aquí -->
+    </div>
+</section>
 
 
     <!-- Total price of the products or services section-container -->
@@ -81,10 +47,6 @@
         <h1>Total del Carrito</h1>
         <div class="container2-border">
             <div class="row">
-                <div class="box">
-                    <h3>Subtotal</h3>
-                    <p>$00.00</p>
-                </div>
                 <div class="box2">
                     <h3>Total</h3>
                     <p>$00.00</p>
@@ -95,7 +57,93 @@
      </section>
 
 
-
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartContainer = document.getElementById('cart-container');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            if (cart.length === 0) {
+                cartContainer.innerHTML = '<p>El carrito está vacío.</p>';
+                return;
+            }
+    
+            cart.forEach((item, index) => {
+                const cartItemElement = document.createElement('div');
+                cartItemElement.classList.add('info-box');
+    
+                cartItemElement.innerHTML = `
+                    <div class="column-eliminar">
+                        <h3>Eliminar</h3>
+                        <a href="#" data-index="${index}" class="remove-item"><i class="fa-solid fa-xmark X"></i></a>
+                    </div>
+                    <div class="pro-serv">
+                        <h3>Producto o Servicio</h3>
+                        <p>${item.nombre}</p>
+                    </div>
+                    <div class="pro-serv-precio">
+                        <h3>Precio</h3>
+                        <p>${item.precioUnitario || item.precio}</p>
+                    </div>
+                    <div class="pro-serv-cant">
+                        <h3>Cantidad</h3>
+                        ${item.tipo === 'servicio' ? 
+                            `<select class="dropdown quantity-dropdown" data-index="${index}" disabled>
+                                <option value="1" selected>1</option>
+                            </select>` 
+                            : 
+                            `<select class="dropdown quantity-dropdown" data-index="${index}">
+                                <option value="1" ${item.cantidad === 1 ? 'selected' : ''}>1</option>
+                                <option value="2" ${item.cantidad === 2 ? 'selected' : ''}>2</option>
+                                <option value="3" ${item.cantidad === 3 ? 'selected' : ''}>3</option>
+                                <option value="4" ${item.cantidad === 4 ? 'selected' : ''}>4</option>
+                                <option value="5" ${item.cantidad === 5 ? 'selected' : ''}>5</option>
+                                <option value="6" ${item.cantidad === 6 ? 'selected' : ''}>6</option>
+                                <option value="7" ${item.cantidad === 7 ? 'selected' : ''}>7</option>
+                                <option value="8" ${item.cantidad === 8 ? 'selected' : ''}>8</option>
+                                <option value="9" ${item.cantidad === 9 ? 'selected' : ''}>9</option>
+                                <option value="10" ${item.cantidad === 10 ? 'selected' : ''}>10</option>
+                            </select>`
+                        }
+                    </div>
+                    <div class="pro-serv-subtotal">
+                        <h3>Subtotal</h3>
+                        <p class="subtotal">${item.tipo === 'servicio' ? item.precio : item.precioTotal}</p>
+                        <a href="#" class="boton update-cart" data-index="${index}">Actualizar Carrito</a>
+                    </div>
+                `;
+    
+                cartContainer.appendChild(cartItemElement);
+            });
+    
+            // Event listener for removing items
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const index = this.getAttribute('data-index');
+                    cart.splice(index, 1);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    location.reload();
+                });
+            });
+    
+            // Event listener for updating cart
+            document.querySelectorAll('.update-cart').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const index = this.getAttribute('data-index');
+                    const quantityDropdown = document.querySelector(`.quantity-dropdown[data-index="${index}"]`);
+                    const newQuantity = parseInt(quantityDropdown.value);
+                    const unitPrice = parseFloat((cart[index].precioUnitario || cart[index].precio).replace(/[^0-9.-]+/g, ""));
+                    const newTotalPrice = (unitPrice * newQuantity).toFixed(2);
+    
+                    cart[index].cantidad = newQuantity;
+                    cart[index].precioTotal = `$${newTotalPrice}`;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    location.reload();
+                });
+            });
+        });
+    </script>
 
     <script src="https://kit.fontawesome.com/3c5fad524f.js" crossorigin="anonymous"></script>
     
