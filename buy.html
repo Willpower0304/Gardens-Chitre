@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitre Gardens</title>
+    <link rel="stylesheet" href="buy.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="payment-form" action="">
+            <div class="row">
+                <div class="col">
+                    <h3 class="title">Dirección de Envío</h3>
+                    <div class="inputBox">
+                        <span>Nombre Completo :</span>
+                        <input type="text" placeholder="Nombre Apellido">
+                    </div>
+                    <div class="inputBox">
+                        <span>Correo :</span>
+                        <input type="email" placeholder="ejemplo@ejm.com">
+                    </div>
+                    <div class="inputBox">
+                        <span>Dirección :</span>
+                        <input type="text" placeholder="calle - localidad">
+                    </div>
+                    <div class="inputBox">
+                        <span>Ciudad :</span>
+                        <input type="text" placeholder="Chitre">
+                    </div>
+                    <div class="flex">
+                        <div class="inputBox">
+                            <span>Provincia :</span>
+                            <input type="text" placeholder="Herrera">
+                        </div>
+                        <div class="inputBox">
+                            <span>Código Postal :</span>
+                            <input type="text" placeholder="123 456">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <h3 class="title">Pago</h3>
+                    <div class="inputBox">
+                        <span>Tarjetas Aceptadas :</span>
+                        <img src="img/card_img.png" alt="credit-card">
+                    </div>
+                    <div class="inputBox">
+                        <span>Nombre de la tarjeta :</span>
+                        <input type="text" placeholder="NOMBRE APELLIDO">
+                    </div>
+                    <div class="inputBox">
+                        <span>Número de la tarjeta :</span>
+                        <input type="number" placeholder="1111-2222-3333-4444">
+                    </div>
+                    <div class="inputBox">
+                        <span>Mes de Vencimiento :</span>
+                        <input type="text" placeholder="Enero">
+                    </div>
+                    <div class="flex">
+                        <div class="inputBox">
+                            <span>Año Vencimiento :</span>
+                            <input type="number" placeholder="2024">
+                        </div>
+                        <div class="inputBox">
+                            <span>CVC :</span>
+                            <input type="password" placeholder="1234">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Pagar" class="submit-btn">
+        </form>
+    </div>    
+
+    <!-- finish box -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <p>Compra Exitosa</p>
+            <img src="img/exito.png" alt="">
+            <p>Todos los Productos o Servicios fueron comprados con exito, contactenos si hubo un fallo en su compra.</p>
+            <span class="close">&times;</span>
+        </div>
+    </div>
+
+    <!-- Payment verification script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('payment-form');
+            const modal = document.getElementById('successModal');
+            const span = document.getElementsByClassName('close')[0];
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                modal.style.display = 'block';
+            });
+
+            span.onclick = function() {
+                modal.style.display = 'none';
+            };
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        });
+    </script>
+</body>
+</html>
