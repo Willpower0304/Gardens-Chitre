@@ -15,9 +15,19 @@
     align-items: center;
     padding: 25px;
     min-height: 100vh;
-    background: url(img/img-buy.jpg);
-    background-size: cover;
-    background-position: center;
+    background-color: #f1f1f1;
+}
+
+.container a {
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.container .flecha {
+    margin-right: 10px;
+    padding-bottom: 25px;
 }
 
 .container form {
@@ -126,21 +136,36 @@
     border-radius: 10px;
 }
 
-.modal-content img {
-    width: 128px;
-    height: 128px;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
+.modal-content .titulo {
+    margin-bottom: 30px;
+    font-size: 20px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
+.modal-content img {
+    width: 128px;
+    height: 128px;
+    margin-bottom: 30px;
+}
+
+.modal-content .descripcion {
+    margin-bottom: 25px;
+    color: #444444;
+}
+
+.close {
+    width: 180px;
+    height: 30px;
+    background-color: #2ecc71;
+    border-radius: 10px;
+    color: #fefefe;
     text-decoration: none;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.close:hover {
+    background-color: #23a358;
 }
