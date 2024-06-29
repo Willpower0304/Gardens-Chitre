@@ -23,6 +23,8 @@
             </ul>
         </div>
 
+        <img class="flower" src="/img/back-flower.png" alt="background-flower">
+
         <div class="box2">
             <h1>Configuraciones </h1>
 
@@ -58,49 +60,56 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const userData = JSON.parse(localStorage.getItem('user'));
+    let userData = JSON.parse(localStorage.getItem('user')) || {};
 
-            if (userData) {
-                document.getElementById('user-display-name').textContent = userData.username;
-                document.getElementById('username').value = userData.username;
-                document.getElementById('email').value = userData.email;
+    // Función para actualizar y guardar datos
+    function updateAndSaveUserData() {
+        const username = document.getElementById('username').value;
+        const nombre = document.getElementById('Nombre').value;
+        const apellido = document.getElementById('Apellido').value;
+        const email = document.getElementById('email').value;
 
-                if (userData.Nombre) {
-                    document.getElementById('Nombre').value = userData.Nombre;
-                }
-                if (userData.Apellido) {
-                    document.getElementById('Apellido').value = userData.Apellido;
-                }
-            }
+        // Validate email format
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert('Por favor, introduce un correo electrónico válido.');
+            return;
+        }
 
-            document.getElementById('update-profile').addEventListener('click', function(event) {
-                event.preventDefault();
+        // Update user data in localStorage
+        userData = { ...userData, username, nombre, apellido, email };
+        localStorage.setItem('user', JSON.stringify(userData));
+        alert('Perfil actualizado exitosamente');
+        location.reload(); // Reload the page to reflect updated data
+    }
 
-                const username = document.getElementById('username').value;
-                const nombre = document.getElementById('Nombre').value;
-                const apellido = document.getElementById('Apellido').value;
-                const email = document.getElementById('email').value;
+    // Cargar datos del usuario si existen en localStorage
+    if (userData) {
+        document.getElementById('user-display-name').textContent = userData.username || 'Nombre del Usuario';
+        document.getElementById('username').value = userData.username || '';
+        document.getElementById('email').value = userData.email || '';
 
-                // Validate email format
-                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailPattern.test(email)) {
-                    alert('Por favor, introduce un correo electrónico válido.');
-                    return;
-                }
+        if (userData.nombre) {
+            document.getElementById('Nombre').value = userData.nombre;
+        }
+        if (userData.apellido) {
+            document.getElementById('Apellido').value = userData.apellido;
+        }
+    }
 
-                // Update user data in localStorage
-                const updatedUserData = { ...userData, username, nombre, apellido, email };
-                localStorage.setItem('user', JSON.stringify(updatedUserData));
-                alert('Perfil actualizado exitosamente');
-                location.reload(); // Reload the page to reflect updated data
-            });
+    // Evento click para actualizar perfil
+    document.getElementById('update-profile').addEventListener('click', function(event) {
+        event.preventDefault();
+        updateAndSaveUserData();
+    });
 
-            document.getElementById('logout').addEventListener('click', function(event) {
-                event.preventDefault();
-                localStorage.removeItem('user');
-                window.location.href = 'Home.html';
-            });
-        });
+    // Evento click para cerrar sesión
+    document.getElementById('logout').addEventListener('click', function(event) {
+        event.preventDefault();
+        localStorage.removeItem('user');
+        window.location.href = 'Home.html'; // Redirigir a la página de inicio
+    });
+});
     </script>
     
 </body>

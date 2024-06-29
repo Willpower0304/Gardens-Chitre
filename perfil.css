@@ -19,6 +19,7 @@
 body {
     font-family: "Judson", serif;
     background-color: var(--bg);
+    overflow: hidden;
 }
 
 .container {
@@ -131,4 +132,12 @@ ul {
 
 .container .box2 .container-btn .boton2:hover {
     background: #dbdbdb;
+}
+
+.flower {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.1;
+    top: -40px;
+    right: -800px;
 }
