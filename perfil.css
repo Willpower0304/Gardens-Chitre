@@ -1,0 +1,134 @@
+:root {
+    --bg: #F1F1F1;
+    --clrA: #4A4A4A;
+    --clrRed: #D95858;
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Judson", serif;
+    background-color: var(--bg);
+}
+
+.container {
+    display: flex;
+}
+
+.container .box {
+    width: 40%;
+    height: 100vh;
+    border: 1px solid rgb(216, 216, 216);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .box img {
+    max-width: 125px;
+    max-height: 125px;
+    margin: 2em 0;
+}
+
+.container .box h2 {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 2em;
+}
+
+ul {
+    list-style-type: none;
+    width: 100%; 
+}
+
+.container .box li {
+    padding: 1.5em;
+    border: 1px solid rgba(224, 224, 224, 0.856);
+}
+
+.container .box a{
+    text-decoration: none;
+    color: var(--clrA);
+    font-size: 1.3em;
+}
+
+
+.container .box2 {
+    width: 100%;
+    padding: 3em;
+}
+
+.container .box2 .custome-input {
+    display: flex;
+    flex-direction: column;
+    margin: 1.7rem 0;
+}
+
+.container .box2 .custome-input label {
+    color: var(--clrA);
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+}
+
+.container .box2 .custome-input input {
+    width: 30em;
+    height: 2.5em;
+    border: 1px solid rgb(216, 216, 216);
+    outline: none;
+}
+
+.container .box2 .custome-input input[type=text], input[type=email] {
+    color: var(--clrA);
+    padding-left: 1em;
+}
+
+.container .box2 .custome-input input[type=text]:focus {
+    border: 2px solid #afafaf;
+}
+
+.container .box2 .custome-input input[type=email]:focus {
+    border: 2px solid #afafaf;
+}
+
+.container .box2 .container-btn {
+    margin-top: 2em;
+}
+
+.container .box2 .container-btn .boton{
+    margin-right: 1em;
+    padding: 0.6em;
+    background-color: var(--clrRed);
+    cursor: pointer;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 1 ease-in;
+}
+
+.container .box2 .container-btn .boton:hover {
+    background-color: #da4444;
+}
+
+.container .box2 .container-btn .boton2{
+    padding: 0.6em;
+    cursor: pointer;
+    border: 1px solid rgb(201, 201, 201);
+    color: var(--clrA);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 1 ease-in;
+}
+
+.container .box2 .container-btn .boton2:hover {
+    background: #dbdbdb;
+}

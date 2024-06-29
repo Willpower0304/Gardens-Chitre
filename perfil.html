@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="perfil.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="box">
+            <img src="img/usuario.png" alt="user img">
+            <h2 id="user-display-name">Nombre del Usuario</h2>
+            <ul>
+                <li><a href="#">Cuenta</a></li>
+                <li><a href="#">Contraseña</a></li>
+            </ul>
+        </div>
+
+        <div class="box2">
+            <h1>Configuraciones </h1>
+
+            <form id="profile-form">
+                <div class="custome-input">
+                    <label for="username">Nombre de Usuario</label>
+                    <input type="text" id="username" name="username" placeholder="" autocomplete="off" required>
+                </div>
+
+                <div class="custome-input">
+                    <label for="Nombre">Nombre</label>
+                    <input type="text" id="Nombre" name="Nombre" placeholder="" autocomplete="off">
+                </div>
+
+                <div class="custome-input">
+                    <label for="Apellido">Apellido</label>
+                    <input type="text" id="Apellido" name="Apellido" placeholder="" autocomplete="off">
+                </div>
+
+                <div class="custome-input">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="" autocomplete="off" required>
+                </div>
+                
+                <div class="container-btn">
+                    <a href="#" id="update-profile" class="boton">Actualizar</a>
+                    <a href="#" id="logout" class="boton2">Cerrar Sesión</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userData = JSON.parse(localStorage.getItem('user'));
+
+            if (userData) {
+                document.getElementById('user-display-name').textContent = userData.username;
+                document.getElementById('username').value = userData.username;
+                document.getElementById('email').value = userData.email;
+
+                if (userData.Nombre) {
+                    document.getElementById('Nombre').value = userData.Nombre;
+                }
+                if (userData.Apellido) {
+                    document.getElementById('Apellido').value = userData.Apellido;
+                }
+            }
+
+            document.getElementById('update-profile').addEventListener('click', function(event) {
+                event.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const nombre = document.getElementById('Nombre').value;
+                const apellido = document.getElementById('Apellido').value;
+                const email = document.getElementById('email').value;
+
+                // Validate email format
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    alert('Por favor, introduce un correo electrónico válido.');
+                    return;
+                }
+
+                // Update user data in localStorage
+                const updatedUserData = { ...userData, username, nombre, apellido, email };
+                localStorage.setItem('user', JSON.stringify(updatedUserData));
+                alert('Perfil actualizado exitosamente');
+                location.reload(); // Reload the page to reflect updated data
+            });
+
+            document.getElementById('logout').addEventListener('click', function(event) {
+                event.preventDefault();
+                localStorage.removeItem('user');
+                window.location.href = 'Home.html';
+            });
+        });
+    </script>
+    
+</body>
+</html>

@@ -35,25 +35,41 @@
             <div class="line"></div>
         </div>
 
-        <form action="Home.html">
+        <form id="login-form">
             <label for="username">Nombre de Usuario</label>
             <div class="custome-input">
-                <input type="text" name="text" placeholder="Usuario" autocomplete="off">
+                <input type="text" id="username" name="username" placeholder="Usuario" autocomplete="off" required>
                 <i class="fa-solid fa-user" style="color: #ffffff;"></i>
             </div>
             <label for="password">Password</label>
             <div class="custome-input">
-                <input type="password" name="password" placeholder="Contraseña" autocomplete="off">
+                <input type="password" id="password" name="password" placeholder="Contraseña" autocomplete="off" required>
                 <i class="fa-solid fa-lock" style="color: #ffffff;"></i>
             </div>
-            <button class="login">Continuar</button>
+            <button type="submit" class="login">Continuar</button>
             <div class="links">
                 <a href="#">Restablecer Contraseña</a>
                 <a href="Registrar.html">¿No tienes una Cuenta?</a>
             </div>
         </form>
-
     </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const userData = JSON.parse(localStorage.getItem('user'));
+
+            if (userData && userData.username === username && userData.password === password) {
+                window.location.href = 'Home.html';
+            } else {
+                alert('El usuario o la contraseña no son válidos.');
+            }
+        });
+    </script>
 
 
     <script src="https://kit.fontawesome.com/3c5fad524f.js" crossorigin="anonymous"></script>
