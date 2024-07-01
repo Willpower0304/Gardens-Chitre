@@ -20,28 +20,28 @@
                     <h3 class="title">Dirección de Envío</h3>
                     <div class="inputBox">
                         <span>Nombre Completo :</span>
-                        <input type="text" placeholder="Nombre Apellido">
+                        <input type="text" id="full-name" placeholder="Nombre Apellido" required>
                     </div>
                     <div class="inputBox">
                         <span>Correo :</span>
-                        <input type="email" placeholder="ejemplo@ejm.com">
+                        <input type="email" id="email" placeholder="ejemplo@ejm.com" required>
                     </div>
                     <div class="inputBox">
                         <span>Dirección :</span>
-                        <input type="text" placeholder="calle - localidad">
+                        <input type="text" id="address" placeholder="calle - localidad" required>
                     </div>
                     <div class="inputBox">
                         <span>Ciudad :</span>
-                        <input type="text" placeholder="Chitre">
+                        <input type="text" id="city" placeholder="Chitre" required>
                     </div>
                     <div class="flex">
                         <div class="inputBox">
                             <span>Provincia :</span>
-                            <input type="text" placeholder="Herrera">
+                            <input type="text" id="province" placeholder="Herrera" required>
                         </div>
                         <div class="inputBox">
                             <span>Código Postal :</span>
-                            <input type="text" placeholder="123 456">
+                            <input type="text" id="postal-code" placeholder="123 456" required>
                         </div>
                     </div>
                 </div>
@@ -53,24 +53,24 @@
                     </div>
                     <div class="inputBox">
                         <span>Nombre de la tarjeta :</span>
-                        <input type="text" placeholder="NOMBRE APELLIDO">
+                        <input type="text" id="card-name" placeholder="NOMBRE APELLIDO" required>
                     </div>
                     <div class="inputBox">
                         <span>Número de la tarjeta :</span>
-                        <input type="number" placeholder="1111-2222-3333-4444">
+                        <input type="number" id="card-number" placeholder="1111222233334444" required maxlength="16">
                     </div>
                     <div class="inputBox">
                         <span>Mes de Vencimiento :</span>
-                        <input type="text" placeholder="Enero">
+                        <input type="text" id="exp-month" placeholder="Enero" required>
                     </div>
                     <div class="flex">
                         <div class="inputBox">
                             <span>Año Vencimiento :</span>
-                            <input type="number" placeholder="2024">
+                            <input type="number" id="exp-year" placeholder="2024" required>
                         </div>
                         <div class="inputBox">
                             <span>CVC :</span>
-                            <input type="password" placeholder="1234">
+                            <input type="password" id="cvc" placeholder="123" required maxlength="3">
                         </div>
                     </div>
                 </div>
@@ -79,13 +79,23 @@
         </form>
     </div>    
 
-    <!-- finish box -->
+    <!-- Success Modal -->
     <div id="successModal" class="modal">
         <div class="modal-content">
             <p class="titulo">Compra Exitosa</p>
             <img src="img/exito.png" alt="">
             <p class="descripcion">Todos los Productos o Servicios fueron comprados con exito, contactenos si hubo un fallo en su compra.</p>
-            <a href="Tienda.html" class="close">Volver a la Tienda<a/>
+            <a href="Tienda.html" class="close">Volver a la Tienda</a>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <p class="titulo">Error en la Compra</p>
+            <img src="img/cancelar.png" alt="error-img">
+            <p class="descripcion">Hubo un error con los datos proporcionados. Por favor, revisa la información e intenta de nuevo.</p>
+            <a href="#" class="close2">Volver</a>
         </div>
     </div>
 
@@ -95,24 +105,82 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('payment-form');
-            const modal = document.getElementById('successModal');
-            const span = document.getElementsByClassName('close')[0];
+            const successModal = document.getElementById('successModal');
+            const errorModal = document.getElementById('errorModal');
+            const closeButtons = document.querySelectorAll('.close');
+            const closeErrorButton = document.querySelector('.close2');
 
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
+            // Helper function to show modal
+            function showModal(modal) {
                 modal.style.display = 'block';
+            }
+
+            // Helper function to hide modal
+            function hideModal(modal) {
+                modal.style.display = 'none';
+            }
+
+            // Event listener for closing modals
+            closeButtons.forEach(button => {
+                button.onclick = function() {
+                    hideModal(successModal);
+                    hideModal(errorModal);
+                };
             });
 
-            span.onclick = function() {
-                modal.style.display = 'none';
+            closeErrorButton.onclick = function(event) {
+                event.preventDefault();
+                hideModal(errorModal);
             };
 
             window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
+                if (event.target == successModal) {
+                    hideModal(successModal);
+                } else if (event.target == errorModal) {
+                    hideModal(errorModal);
                 }
             };
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Retrieve input values
+                const fullName = document.getElementById('full-name').value;
+                const email = document.getElementById('email').value;
+                const address = document.getElementById('address').value;
+                const city = document.getElementById('city').value;
+                const province = document.getElementById('province').value;
+                const postalCode = document.getElementById('postal-code').value;
+                const cardName = document.getElementById('card-name').value;
+                const cardNumber = document.getElementById('card-number').value;
+                const expMonth = document.getElementById('exp-month').value;
+                const expYear = document.getElementById('exp-year').value;
+                const cvc = document.getElementById('cvc').value;
+
+                // Retrieve user data from localStorage
+                const userData = JSON.parse(localStorage.getItem('user'));
+
+                // Validate input values
+                if (
+                    fullName.trim() !== '' &&
+                    email === userData.email &&
+                    address.trim() !== '' &&
+                    city.trim() !== '' &&
+                    province.trim() !== '' &&
+                    postalCode.trim() !== '' &&
+                    cardName.trim() !== '' &&
+                    cardNumber.trim().length === 16 &&
+                    expMonth.trim() !== '' &&
+                    expYear.trim().length === 4 &&
+                    cvc.trim().length === 3
+                ) {
+                    showModal(successModal);
+                } else {
+                    showModal(errorModal);
+                }
+            });
         });
     </script>
 </body>
+
 </html>

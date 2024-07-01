@@ -169,3 +169,21 @@
 .close:hover {
     background-color: #23a358;
 }
+
+
+.close2 {
+    width: 180px;
+    height: 30px;
+    background-color: #cc2e2e;
+    border-radius: 10px;
+    color: #fefefe;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.close2:hover {
+    background-color: #a32323;
+}
