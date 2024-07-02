@@ -42,6 +42,13 @@
         </div>
     </section>
 
+    <div id="notification" class="notification">
+        Servicio añadido al carrito
+    </div>
+    <div id="error-notification" class="notification error-notification">
+        El servicio ya está en el carrito
+    </div>
+
     <!-- Footer Section -->
    <footer>
     <div class="footer-logo">
@@ -64,7 +71,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const serviceId = urlParams.get('id');
-    
+
             fetch('Servicios.json')
                 .then(response => response.json())
                 .then(data => {
@@ -94,7 +101,7 @@
                                 </div>
                             </section>
                         `;
-    
+
                         document.getElementById('add-to-cart').addEventListener('click', function(event) {
                             event.preventDefault();
                             let cart = localStorage.getItem('cart');
@@ -103,14 +110,14 @@
                             } else {
                                 cart = JSON.parse(cart);
                             }
-    
+
                             // Verificar si el servicio ya está en el carrito
                             const alreadyInCart = cart.some(item => item.id === servicio.id && item.tipo === 'servicio');
                             if (alreadyInCart) {
-                                alert("Este servicio ya está en el carrito.");
+                                showNotification('error-notification');
                                 return;
                             }
-    
+
                             const cartItem = {
                                 id: servicio.id,
                                 nombre: servicio.nombre,
@@ -119,16 +126,24 @@
                                 cantidad: 1,
                                 precioTotal: servicio.precio
                             };
-    
+
                             cart.push(cartItem);
                             localStorage.setItem('cart', JSON.stringify(cart));
-                            alert("Servicio añadido al carrito.");
+                            showNotification('notification');
                         });
                     } else {
                         document.getElementById('servicio-detalle').innerHTML = '<p>Servicio no encontrado.</p>';
                     }
                 })
                 .catch(error => console.error('Error al cargar el servicio:', error));
+
+            function showNotification(notificationId) {
+                const notification = document.getElementById(notificationId);
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            }
         });
     </script>
 

@@ -23,6 +23,13 @@
             </ul>
         </div>
 
+        <div id="notification" class="notification">
+            Perfil actualizado exitosamente
+        </div>
+        <div id="error-notification" class="notification error-notification">
+            Por favor, introduce un correo electrónico válido
+        </div>
+
         <img class="flower" src="/img/back-flower.png" alt="background-flower">
 
         <div class="box2">
@@ -60,56 +67,67 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    let userData = JSON.parse(localStorage.getItem('user')) || {};
+            let userData = JSON.parse(localStorage.getItem('user')) || {};
 
-    // Función para actualizar y guardar datos
-    function updateAndSaveUserData() {
-        const username = document.getElementById('username').value;
-        const nombre = document.getElementById('Nombre').value;
-        const apellido = document.getElementById('Apellido').value;
-        const email = document.getElementById('email').value;
+            // Función para mostrar notificaciones
+            function showNotification(notificationId) {
+                const notification = document.getElementById(notificationId);
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            }
 
-        // Validate email format
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            alert('Por favor, introduce un correo electrónico válido.');
-            return;
-        }
+            // Función para actualizar y guardar datos
+            function updateAndSaveUserData() {
+                const username = document.getElementById('username').value;
+                const nombre = document.getElementById('Nombre').value;
+                const apellido = document.getElementById('Apellido').value;
+                const email = document.getElementById('email').value;
 
-        // Update user data in localStorage
-        userData = { ...userData, username, nombre, apellido, email };
-        localStorage.setItem('user', JSON.stringify(userData));
-        alert('Perfil actualizado exitosamente');
-        location.reload(); // Reload the page to reflect updated data
-    }
+                // Validate email format
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    showNotification('error-notification');
+                    return;
+                }
 
-    // Cargar datos del usuario si existen en localStorage
-    if (userData) {
-        document.getElementById('user-display-name').textContent = userData.username || 'Nombre del Usuario';
-        document.getElementById('username').value = userData.username || '';
-        document.getElementById('email').value = userData.email || '';
+                // Update user data in localStorage
+                userData = { ...userData, username, nombre, apellido, email };
+                localStorage.setItem('user', JSON.stringify(userData));
+                showNotification('notification');
+                setTimeout(() => {
+                    location.reload(); 
+                }, 2000);
+            }
 
-        if (userData.nombre) {
-            document.getElementById('Nombre').value = userData.nombre;
-        }
-        if (userData.apellido) {
-            document.getElementById('Apellido').value = userData.apellido;
-        }
-    }
+            // Cargar datos del usuario si existen en localStorage
+            if (userData) {
+                document.getElementById('user-display-name').textContent = userData.username || 'Nombre del Usuario';
+                document.getElementById('username').value = userData.username || '';
+                document.getElementById('email').value = userData.email || '';
 
-    // Evento click para actualizar perfil
-    document.getElementById('update-profile').addEventListener('click', function(event) {
-        event.preventDefault();
-        updateAndSaveUserData();
-    });
+                if (userData.nombre) {
+                    document.getElementById('Nombre').value = userData.nombre;
+                }
+                if (userData.apellido) {
+                    document.getElementById('Apellido').value = userData.apellido;
+                }
+            }
 
-    // Evento click para cerrar sesión
-    document.getElementById('logout').addEventListener('click', function(event) {
-        event.preventDefault();
-        localStorage.removeItem('user');
-        window.location.href = 'Home.html'; // Redirigir a la página de inicio
-    });
-});
+            // Evento click para actualizar perfil
+            document.getElementById('update-profile').addEventListener('click', function(event) {
+                event.preventDefault();
+                updateAndSaveUserData();
+            });
+
+            // Evento click para cerrar sesión
+            document.getElementById('logout').addEventListener('click', function(event) {
+                event.preventDefault();
+                localStorage.removeItem('user');
+                window.location.href = 'Home.html'; 
+            });
+        });
     </script>
     
 </body>
