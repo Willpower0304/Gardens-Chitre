@@ -249,6 +249,7 @@ body {
     width: 288px;
     height: 360px;
     object-fit: cover;
+    border-radius: 5px;
   }
 
   .box2 h2 {
@@ -274,6 +275,7 @@ body {
     width: 288px;
     height: 360px;
     object-fit: cover;
+    border-radius: 5px;
   }
 
   .btn {
