@@ -134,12 +134,13 @@ body {
   .hero {
     color: #fff;
     text-align: center;
-    padding: 90px 0 0;
+    padding: 90px 0 90px;
   }
 
   .hero h1 {
     font-size: 70px;
-    padding: 0 270px 0;
+    padding: 0 150px 0;
+    margin-top: 0;
     margin-bottom: 40px;
   }
 
@@ -147,7 +148,7 @@ body {
     font-family: "Junge", cursive;
     font-size: 20px;
     color: #dddddd;
-    padding: 0 430px 0;
+    padding: 0 330px 0;
   }
 
 
