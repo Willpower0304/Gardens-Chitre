@@ -172,20 +172,23 @@ body {
   .hero {
     color: #fff;
     text-align: center;
-    margin: 90px 0 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
   }
 
   .hero h1 {
     font-size: 70px;
-    padding: 0 150px 0;
-    margin-bottom: 40px;
+    margin: 0;
   }
 
   .hero p {
     font-family: "Junge", cursive;
     font-size: 20px;
     color: #dddddd;
-    margin: 0 255px 0;
+    margin: 2rem 20rem 2rem;
   }
 
 
