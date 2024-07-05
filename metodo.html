@@ -11,6 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="back">
@@ -23,13 +24,15 @@
             </div>
             <div class="container-inputs">
                 <div class="inputBox">
-                    <label for="debito">Débito o crédito</label><input id="debito" name="metodo-pago" type="radio" checked>
+                    <label for="debito">Débito o crédito</label>
+                    <input id="debito" name="metodo-pago" type="radio" checked>
                 </div>
                 <div class="inputBox2">
-                    <label for="clave">Clave</label><input id="clave" name="metodo-pago" type="radio">
+                    <label for="clave">Clave</label>
+                    <input id="clave" name="metodo-pago" type="radio">
                 </div>
             </div>
-            <button><a href="#">Continuar Pago</a></button>
+            <button id="continue-payment">Continuar Pago</button>
         </div>
     </div>
 
@@ -38,11 +41,21 @@
             const totalPrice = localStorage.getItem('totalPrice') || '00.00';
             const totalParagraph = document.getElementById('total-paragraph');
             totalParagraph.textContent = `Decide cómo te gustaría pagar la cuenta de $${totalPrice}`;
+
+            const continueButton = document.getElementById('continue-payment');
+
+            continueButton.addEventListener('click', function() {
+                const selectedPaymentMethod = document.querySelector('input[name="metodo-pago"]:checked').id;
+                if (selectedPaymentMethod === 'debito') {
+                    window.location.href = 'dc.html';
+                } else if (selectedPaymentMethod === 'clave') {
+                    window.location.href = 'clave.html';
+                }
+            });
         });
     </script>
 
     <script src="https://kit.fontawesome.com/3c5fad524f.js" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitre Gardens</title>
+    <link rel="stylesheet" href="dc.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="back">
+            <a href="metodo.html" class="volver">Volver</a>
+        </div>
+        <div class="border-box">
+            <div class="title">
+                <h1>Detalles de Pago</h1>
+                <p id="total-paragraph">Por favor ingresa tu información de pago para completar tu pago de $00.00</p>
+            </div>
+            <div class="inputs-boxes">
+                <h3>Nombre de la Tarjeta</h3>
+                <input type="text" name="nTarjeta" id="nTarjeta" autocomplete="off">
+                <h3>Número de la Tarjeta</h3>
+                <input type="text" name="numTarjeta" id="numTarjeta" maxlength="19" autocomplete="off">
+                <div class="box2-container">
+                    <div class="box">
+                        <h3>Vencimiento</h3>
+                    <input type="text" name="exp" id="exp" maxlength="5" autocomplete="off">
+                    </div>
+                    <div class="box2"><h3>CVC</h3>
+                        <input type="password" name="cvc" id="cvc" max="3" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <button id="total-paragraph-button">Pagar $00.00</button>
+        </div>
+    </div>
+
+    <div id="processing-container" class="processing-container">
+        <div class="processing-box">
+            <div class="loader"></div>
+            <p>Procesando</p>
+        </div>
+    </div>
+
+    <div id="success-container" class="success-container">
+        <div class="success-box">
+            <h2>Compra Exitosa</h2>
+            <img src="img/flower.png" alt="Compra Exitosa">
+            <h3>Resumen del Pago</h3>
+            <div class="summary">
+                <div class="summary-header">
+                    <div>Producto/Servicio</div>
+                    <div>Cantidad</div>
+                    <div>Total</div>
+                </div>
+                <div id="summary-items">
+                    <!-- Aquí se agregan los productos dinámicamente -->
+                </div>
+                <hr>
+                <div class="summary-total">
+                    <div>Total</div>
+                    <div></div>
+                    <div class="total">$00.00</div>
+                </div>
+                <a class="boton" href="Tienda.html">Volver a la Tienda</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+    const totalPrice = localStorage.getItem('totalPrice') || '00.00';
+    const totalParagraph = document.getElementById('total-paragraph');
+    totalParagraph.textContent = `Por favor ingresa tu información de pago para completar tu pago de $${totalPrice}`;
+
+    const totalParagraphButton = document.getElementById('total-paragraph-button');
+    totalParagraphButton.textContent = `Pagar $${totalPrice}`;
+
+    const numTarjetaInput = document.getElementById('numTarjeta');
+    const expInput = document.getElementById('exp');
+    const cvcInput = document.getElementById('cvc');
+
+    numTarjetaInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+        let formattedValue = value.match(/.{1,4}/g)?.join(' ') || '';
+        if (formattedValue.length > 19) {
+            formattedValue = formattedValue.slice(0, 19);
+        }
+        e.target.value = formattedValue;
+    });
+
+    numTarjetaInput.addEventListener('keypress', function(e) {
+        if (e.target.value.replace(/\s+/g, '').length >= 12 && e.key !== 'Backspace') {
+            e.preventDefault();
+        }
+    });
+
+    expInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+        if (value.length > 4) {
+            value = value.slice(0, 4);
+        }
+        if (value.length >= 3) {
+            value = value.slice(0, 2) + '/' + value.slice(2);
+        }
+        e.target.value = value;
+    });
+
+    expInput.addEventListener('keypress', function(e) {
+        if (e.target.value.replace(/\s+/g, '').length >= 5 && e.key !== 'Backspace') {
+            e.preventDefault();
+        }
+    });
+
+    cvcInput.addEventListener('keypress', function(e) {
+        if (e.target.value.length >= 3 && e.key !== 'Backspace') {
+            e.preventDefault();
+        }
+    });
+
+    const processingContainer = document.getElementById('processing-container');
+    const successContainer = document.getElementById('success-container');
+    const summaryItemsContainer = document.getElementById('summary-items');
+    const summaryTotalElement = document.querySelector('.summary-total .total');
+
+    totalParagraphButton.addEventListener('click', function() {
+        processingContainer.style.display = 'flex';
+        setTimeout(() => {
+            processingContainer.style.display = 'none';
+            successContainer.style.display = 'flex';
+
+            // Limpia cualquier contenido previo en el resumen del pago
+            summaryItemsContainer.innerHTML = '';
+
+            // Recupera los datos del carrito del localStorage
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalPrice = 0;
+
+            // Itera sobre cada ítem en el carrito y muestra en el resumen del pago
+            cart.forEach(item => {
+                const cartItemElement = document.createElement('div');
+                cartItemElement.classList.add('summary-item');
+                const itemPrice = parseFloat((item.precioUnitario || item.precio).replace(/[^0-9.-]+/g, ""));
+                const itemQuantity = item.tipo === 'servicio' ? 1 : item.cantidad;
+                const itemTotalPrice = itemPrice * itemQuantity;
+
+                totalPrice += itemTotalPrice;
+
+                cartItemElement.innerHTML = `
+                    <div class="mar1">${item.nombre}</div>
+                    <div class="container-box">
+                        <div>${itemQuantity}</div>
+                        <div>$${itemTotalPrice.toFixed(2)}</div>
+                    </div>
+                `;
+                summaryItemsContainer.appendChild(cartItemElement);
+            });
+
+            // Muestra el precio total en el resumen del pago
+            summaryTotalElement.textContent = `$${totalPrice.toFixed(2)}`;
+
+            // Guarda el total en localStorage (aunque ya debería estar guardado antes)
+            localStorage.setItem('totalPrice', totalPrice.toFixed(2));
+
+        }, 1000); // 5000 milisegundos = 5 segundos
+    });
+});
+    </script>
+
+</body>
+</html>
