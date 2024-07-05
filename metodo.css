@@ -1,0 +1,122 @@
+:root {
+    --bg: #F1F1F1;
+    --border: #BDBDBD;
+    --bgcolorB: #ffffff;
+    --p: #4A4A4A;
+    --boton: #EF5858;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Judson", serif;
+    background-color: var(--bg);
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.back .volver {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--boton);
+}
+
+.border-box {
+    background-color: var(--bgcolorB);
+    border: 1px solid #BDBDBD;
+    border-radius: 10px;
+    width: 500px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.border-box .title {
+    text-align: center;
+}
+
+.border-box .title h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 2rem 0 1.5rem;
+}
+
+.border-box .title p {
+    font-family: "Junge", cursive;
+    font-size: 1rem;
+    color: var(--p);
+}
+
+.container-inputs {
+    margin: 0 2rem 0;
+}
+
+.container-inputs .inputBox,
+.container-inputs .inputBox2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #d4d4d4;
+    padding: 1rem;
+    border-radius: 15px;
+    margin: 1.5rem 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+    gap: 50px;
+}
+
+input[type="radio"] {
+    accent-color: #4A4A4A;
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+}
+
+button {
+    display: block;
+    margin: 2rem auto;
+    padding: 1rem 3rem;
+    background-color: var(--boton);
+    color: var(--bg);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: 0.2s ease-in;
+}
+
+button:hover {
+    background-color: #c23a3a;
+}
+
+button a {
+    text-decoration: none;
+    color: inherit;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitre Gardens</title>
+    <link rel="stylesheet" href="metodo.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="back">
+            <a href="carrito.html" class="volver">Volver</a>
+        </div>
+        <div class="border-box">
+            <div class="title">
+                <h1>Método de pago</h1>
+                <p id="total-paragraph">Decide cómo te gustaría pagar la cuenta de $00.00</p>
+            </div>
+            <div class="container-inputs">
+                <div class="inputBox">
+                    <label for="debito">Débito o crédito</label><input id="debito" name="metodo-pago" type="radio" checked>
+                </div>
+                <div class="inputBox2">
+                    <label for="clave">Clave</label><input id="clave" name="metodo-pago" type="radio">
+                </div>
+            </div>
+            <button><a href="#">Continuar Pago</a></button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const totalPrice = localStorage.getItem('totalPrice') || '00.00';
+            const totalParagraph = document.getElementById('total-paragraph');
+            totalParagraph.textContent = `Decide cómo te gustaría pagar la cuenta de $${totalPrice}`;
+        });
+    </script>
+
+    <script src="https://kit.fontawesome.com/3c5fad524f.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
