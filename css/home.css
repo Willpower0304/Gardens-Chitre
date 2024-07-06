@@ -14,7 +14,7 @@ body {
   /* Navbar Section */ 
   .body1 {
     min-height: 100vh;
-    background: url(img/fondo.jpg);
+    background: url(../img/fondo.jpg);
     background-size: cover;
     background-position: center;
     position: relative;
@@ -326,7 +326,7 @@ body {
 .contact {
   position: relative;
   padding: 130px 20px;
-  background-image: url('img/fondo2.jpg');
+  background-image: url('../img/fondo2.jpg');
   background-size: cover;
   background-position: center;
   text-align: center;
